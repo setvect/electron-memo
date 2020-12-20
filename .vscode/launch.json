@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "메인프로세스 디버깅",
+      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/vue-cli-service",
+      "runtimeArgs": [
+        "electron:serve",
+        "./src/renderer/main.ts"
+      ],
+    }
+  ]
+}
