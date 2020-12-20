@@ -5,6 +5,7 @@
       "type": "node",
       "request": "launch",
       "name": "메인프로세스 디버깅",
+      "preLaunchTask": "tsc: 빌드 - tsconfig.json",
       "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/vue-cli-service",
       "runtimeArgs": [
         "electron:serve",
