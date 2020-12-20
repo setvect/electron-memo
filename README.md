@@ -1,6 +1,9 @@
 # Election_Vue.js - 메모장
 Election과 Vue.js를 이용해 간단한 메모장 어플리케이션이다.
 
+## 계획
+* 01 Step: Electron + Vue.js + Typescript 초기 셋팅
+
 ## 인스톨 및 실싱
 ### 최초 실행
 ```
