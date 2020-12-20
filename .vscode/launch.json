@@ -7,10 +7,15 @@
       "name": "메인프로세스 디버깅",
       "preLaunchTask": "tsc: 빌드 - tsconfig.json",
       "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/vue-cli-service",
-      "runtimeArgs": [
-        "electron:serve",
-        "./src/renderer/main.ts"
-      ],
+      "runtimeArgs": ["electron:serve", "./src/renderer/main.ts"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "ts 예제",
+      "program": "${workspaceFolder}/out/helloworld.js",
+      "preLaunchTask": "tsc: 빌드 - tsconfig.json",
+      "outFiles": ["${workspaceFolder}/out/**/*.js"]
     }
   ]
 }
