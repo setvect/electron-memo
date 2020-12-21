@@ -22,4 +22,5 @@ npm run electron:build
 - `./dist_electron` 디렉토리에 인스톨 파일 빌드됨
 
 ## 참고 사이트
-- 프로젝트 초기화 참고 사이트: https://itnext.io/electron-application-with-vue-js-and-vuetify-f2a1f9c749b8
+- 프로젝트 초기화: https://itnext.io/electron-application-with-vue-js-and-vuetify-f2a1f9c749b8
+- Electron 디버깅: https://github.com/nklayman/vue-cli-plugin-electron-builder/issues/80

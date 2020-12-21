@@ -3,8 +3,7 @@ import { app, BrowserWindow } from 'electron'
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
 app.on("ready", async () => {
-  console.log("###################");
-  debugger;
+  console.log("@@@@@@@@");
   let window = new BrowserWindow({
     width: 1600,
     height: 900,
