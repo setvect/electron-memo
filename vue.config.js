@@ -3,6 +3,9 @@ module.exports = {
     host: "0.0.0.0",
     port: 8080,
   },
+  configureWebpack: {
+    devtool: 'source-map',
+  },
   pages: {
     index: {
       entry: 'src/renderer/main.ts',
