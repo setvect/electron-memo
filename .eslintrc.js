@@ -54,8 +54,6 @@ module.exports = {
     "no-console": "warn",
     quotes: ["error", "double"],
     "arrow-parens": ["error", "always"],
-    "vue/singleline-html-element-content-newline": ["error", {
-      "ignores": ["pre", "textarea", ...INLINE_ELEMENTS],
-    }],
+    "vue/singleline-html-element-content-newline": ["off"],
   },
 };
