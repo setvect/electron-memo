@@ -1,7 +1,11 @@
 <template>
   <div>
-    <p class="title">Hello, World!</p>
-    <button @click="incremnt()">증가</button>
+    <p class="title">
+      Hello, World!
+    </p>
+    <button @click="incremnt()">
+      증가
+    </button>
     {{ count }}
   </div>
 </template>

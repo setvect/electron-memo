@@ -4,11 +4,11 @@ module.exports = {
     port: 8080,
   },
   configureWebpack: {
-    devtool: 'source-map',
+    devtool: "source-map",
   },
   pages: {
     index: {
-      entry: 'src/renderer/main.ts',
+      entry: "src/renderer/main.ts",
     },
   },
   pluginOptions: {
