@@ -2,13 +2,12 @@ module.exports = {
   root: true,
   extends: [
     "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint",
     "plugin:vue/recommended"
   ],
   parserOptions: {
     parser: "@typescript-eslint/parser",
   },
-  plugins: ["standard", "vue", "@typescript-eslint"],
+  plugins: ["vue", "@typescript-eslint"],
   rules: {
     indent: ["error", 2],
     "comma-dangle": [
