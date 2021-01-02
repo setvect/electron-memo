@@ -5,6 +5,12 @@
 * ISS: 이슈
 
 ## 할일
+* NEW: 입력값 validation check
+* NEW: CRUD 개발
+* NEW: sqlite3와 sequelize 연동
+* NEW: DB 설계
+* NEW: 테스트 환경 구성
+* NEW: 메모장 HTML(목록, 등록, 수정)
 
 ## 한일
 * NEW: ESLint 설정
