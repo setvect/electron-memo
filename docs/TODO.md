@@ -7,6 +7,7 @@
 ## 할일
 
 ## 한일
+* NEW: ESLint 설정
 * NEW: 디버깅 환경 셋팅(Main Process, VUEJS_DEVTOOLS 추가)
 * NEW: 초기셋팅 - 최소 라이브러 사용
 
