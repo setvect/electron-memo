@@ -2,11 +2,11 @@ import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import { app, BrowserWindow } from "electron";
 const isDevelopment = process.env.NODE_ENV !== "production";
 import installExtension, { VUEJS_DEVTOOLS } from "electron-devtools-installer";
-import DbService1 from "./DbService";
+import MemoRepository from "./MemoRepository";
 
 app.on("ready", async() => {
-  const dbService = new DbService1();
-  dbService.init();
+  const memoRepository = new MemoRepository();
+  memoRepository.init();
 
   const window = new BrowserWindow({
     width: 1600,

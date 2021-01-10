@@ -7,7 +7,7 @@ class MemoEntity extends Model {
   public regDate!: Date;
 }
 
-export default class DbService {
+export default class MemoRepository {
   private sequelize: Sequelize;
 
   constructor() {
@@ -18,7 +18,7 @@ export default class DbService {
   }
 
   init(): void {
-    DbService.makeDirectory("db");
+    MemoRepository.makeDirectory("db");
     MemoEntity.init(
       {
         memoSeq: {
