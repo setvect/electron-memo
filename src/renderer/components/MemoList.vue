@@ -33,6 +33,8 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
+import { ipcRenderer } from "electron";
+
 
 interface IMemo {
   no: number;
@@ -62,24 +64,15 @@ export default class MemoList extends Vue {
   }
   public addMemo(event: Event): void {
     event.preventDefault();
-    let nextNo;
-    if (this.items.length == 0) {
-      nextNo = 1;
-    } else {
-      nextNo =
-        this.items
-          .map((item) => item.no)
-          .reduce((previous, current) =>
-            previous > current ? previous : current
-          ) + 1;
-    }
-
-    this.items.splice(0, 0, {
-      no: nextNo,
-      content: this.content,
-      regDate: new Date(),
-    });
-    this.content = "";
+    ipcRenderer
+      .invoke("addMemo", {
+        content: this.content,
+        regDate: new Date(),
+      })
+      .then(() => {
+        console.log("등록");
+        this.content = "";
+      });
   }
 }
 </script>

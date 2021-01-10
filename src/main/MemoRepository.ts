@@ -1,13 +1,14 @@
 import { Sequelize, Model, DataTypes } from "sequelize";
 import fs from "fs";
 
-class MemoEntity extends Model {
+export class MemoEntity extends Model {
   public memoSeq!: number;
   public content!: string;
   public regDate!: Date;
 }
 
 export default class MemoRepository {
+
   private sequelize: Sequelize;
 
   constructor() {
@@ -42,10 +43,28 @@ export default class MemoRepository {
     MemoEntity.sync();
   }
 
+  public static async listMemo() {
+    const result = await MemoEntity.findAll({
+      raw: true,
+    });
+    console.log("result :>> ", result);
+    return result;
+  }
+
+  public static async create(memo: any): Promise<void> {
+    await MemoEntity.create(memo);
+  }
+
+  public static async deleteMemo(memoSeq: number): Promise<void> {
+    const item = await MemoEntity.findByPk(memoSeq);
+    await item.destroy();
+  }
+
   private static makeDirectory(dir: string): void {
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir);
     }
   }
+
 }
 
