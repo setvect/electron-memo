@@ -54,5 +54,8 @@ module.exports = {
     quotes: ["error", "double"],
     "arrow-parens": ["error", "always"],
     "vue/singleline-html-element-content-newline": ["off"],
+    "vue/max-attributes-per-line": ["error", {
+      "singleline": 7,
+    }],
   },
 };
