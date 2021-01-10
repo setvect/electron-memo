@@ -1,14 +1,20 @@
 import { Sequelize, Model, DataTypes } from "sequelize";
 import fs from "fs";
 
-export class MemoEntity extends Model {
+
+interface MemoType {
+  memoSeq: number;
+  content: string;
+  regDate: Date;
+}
+
+export class MemoEntity extends Model<MemoType> {
   public memoSeq!: number;
   public content!: string;
   public regDate!: Date;
 }
 
 export default class MemoRepository {
-
   private sequelize: Sequelize;
 
   constructor() {
@@ -43,21 +49,29 @@ export default class MemoRepository {
     MemoEntity.sync();
   }
 
-  public static async listMemo() {
+  public static async listMemo(): Promise<Array<MemoType>> {
     const result = await MemoEntity.findAll({
-      raw: true,
+      order: [["memoSeq", "DESC"]],
+      // raw: true, // raw: true로 설정하면 Date 타입의 값이 값이 문자열 변함
     });
-    console.log("result :>> ", result);
-    return result;
+    // Date 타입을 유지하기 위해 사용
+    const rtnValue = result.map((record: MemoEntity) => record.get({
+      plain: true,
+    }));
+    return rtnValue;
   }
 
-  public static async create(memo: any): Promise<void> {
+  public static async create(memo: MemoType): Promise<void> {
     await MemoEntity.create(memo);
   }
 
   public static async deleteMemo(memoSeq: number): Promise<void> {
-    const item = await MemoEntity.findByPk(memoSeq);
-    await item.destroy();
+    MemoEntity.destroy({
+      where: {
+        memoSeq,
+      },
+    });
+
   }
 
   private static makeDirectory(dir: string): void {

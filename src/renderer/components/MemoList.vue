@@ -3,7 +3,7 @@
     <b-row>
       <b-table hover :bordered="true" :fields="fields" :items="items">
         <template #cell(no)="data">
-          {{ data.item.no }}
+          {{ data.item.memoSeq }}
         </template>
         <template #cell(메모)="data">
           {{ data.item.content }}
@@ -12,7 +12,7 @@
           {{ data.item.regDate.toISOString() }}
         </template>
         <template #cell(삭제)="data">
-          <b-link @click="deleteItem(data.item.no)">삭제</b-link>
+          <b-link @click="deleteItem(data.item.memoSeq)">삭제</b-link>
         </template>
       </b-table>
     </b-row>
@@ -35,9 +35,8 @@
 import { Vue, Component } from "vue-property-decorator";
 import { ipcRenderer } from "electron";
 
-
 interface IMemo {
-  no: number;
+  memoSeq: number;
   content: string;
   regDate: Date;
 }
@@ -46,32 +45,34 @@ interface IMemo {
 export default class MemoList extends Vue {
   private count = 0;
   private fields = ["no", "메모", "등록일", "삭제"];
-  private items: Array<IMemo> = [
-    { no: 2, content: "피아노 연습하기", regDate: new Date(), },
-    { no: 1, content: "설겆이 하기", regDate: new Date(), }
-  ];
+  private items: Array<IMemo> = [];
   private content = "";
-
-  public deleteItem(no: number): void {
-    const val = this.items.find((item) => item.no == no);
-    if (val == null) {
-      return;
-    }
-    const index = this.items.indexOf(val);
-    if (index !== -1) {
-      this.items.splice(index, 1);
-    }
+  mounted(): void {
+    this.loadList();
   }
-  public addMemo(event: Event): void {
+
+  private loadList() {
+    ipcRenderer.invoke("listMemo").then((result) => {
+      this.items = result;
+    });
+  }
+
+  private addMemo(event: Event): void {
     event.preventDefault();
     ipcRenderer
-      .invoke("addMemo", {
-        content: this.content,
-        regDate: new Date(),
-      })
+      .invoke("addMemo", { content: this.content, regDate: new Date(), })
       .then(() => {
-        console.log("등록");
         this.content = "";
+        this.loadList();
+      });
+  }
+
+  private deleteItem(memoSeq: number): void {
+    ipcRenderer
+      .invoke("deleteMemo", memoSeq)
+      .then(() => {
+        this.content = "";
+        this.loadList();
       });
   }
 }

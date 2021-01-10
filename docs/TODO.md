@@ -5,10 +5,11 @@
 * ISS: 이슈
 
 ## 할일
-* NEW: CRUD 개발
+* NEW: main, renderer 인터페이스 타입 공유
 * NEW: 테스트 환경 구성
 
 ## 한일
+* NEW: CRUD 개발
 * NEW: sqlite3와 sequelize 연동
 * NEW: DB 설계
 * NEW: 메모장 HTML(목록, 등록)
