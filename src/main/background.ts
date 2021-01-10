@@ -2,13 +2,18 @@ import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import { app, BrowserWindow } from "electron";
 const isDevelopment = process.env.NODE_ENV !== "production";
 import installExtension, { VUEJS_DEVTOOLS } from "electron-devtools-installer";
+import DbService1 from "./DbService";
 
 app.on("ready", async() => {
+  const dbService = new DbService1();
+  dbService.init();
+
   const window = new BrowserWindow({
     width: 1600,
     height: 900,
     webPreferences: {
       nodeIntegration: true,
+      contextIsolation: true,
     },
   });
   if (isDevelopment) {
@@ -19,6 +24,7 @@ app.on("ready", async() => {
     createProtocol("app");
     window.loadURL("app://./index.html");
   }
+
   window.on("closed", () => {
     app.quit();
   });

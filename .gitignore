@@ -3,3 +3,4 @@ node_modules
 /dist_electron
 /temp
 /out
+/db
