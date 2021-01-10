@@ -6,7 +6,7 @@
           {{ data.item.no }}
         </template>
         <template #cell(메모)="data">
-          {{ data.item.memo }}
+          {{ data.item.content }}
         </template>
         <template #cell(등록일)="data">
           {{ data.item.regDate.toISOString() }}
@@ -19,7 +19,7 @@
     <b-row>
       <b-form inline @submit="addMemo">
         <b-form-input
-          v-model="memo"
+          v-model="content"
           type="text"
           placeholder="메모 내용"
           class="mb-2 mr-sm-2 mb-sm-0"
@@ -36,7 +36,7 @@ import { Vue, Component } from "vue-property-decorator";
 
 interface IMemo {
   no: number;
-  memo: string;
+  content: string;
   regDate: Date;
 }
 
@@ -45,10 +45,10 @@ export default class MemoList extends Vue {
   private count = 0;
   private fields = ["no", "메모", "등록일", "삭제"];
   private items: Array<IMemo> = [
-    { no: 2, memo: "피아노 연습하기", regDate: new Date(), },
-    { no: 1, memo: "설겆이 하기", regDate: new Date(), }
+    { no: 2, content: "피아노 연습하기", regDate: new Date(), },
+    { no: 1, content: "설겆이 하기", regDate: new Date(), }
   ];
-  private memo = "";
+  private content = "";
 
   public deleteItem(no: number): void {
     const val = this.items.find((item) => item.no == no);
@@ -76,10 +76,10 @@ export default class MemoList extends Vue {
 
     this.items.splice(0, 0, {
       no: nextNo,
-      memo: this.memo,
+      content: this.content,
       regDate: new Date(),
     });
-    this.memo = "";
+    this.content = "";
   }
 }
 </script>
