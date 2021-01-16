@@ -8,6 +8,7 @@ Election과 Vue.js를 이용해 간단한 메모장 어플리케이션이다.
     - VSCode Extension 설치 - ESLint, Prettier - Code formatter
 * 04 Step: 메모장 컴포넌트(HTML) 만들기
 * 05 Step: Sqlite3 + Sequelize 연동
+* 06 Step: 메모 목록 조회, 등록, 삭제 기능 추가
 
 ## 인스톨 및 실싱
 ### 최초 실행
